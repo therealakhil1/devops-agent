@@ -1,0 +1,30 @@
+{
+    "runbook_name": "image_pull_error",
+    "runbook_description": "The deployment failure is caused by the image pull error. This is caused by the image not being found in the local registry.",
+    "runbook_steps": [
+        {
+            "step_name": "gather_information",
+            "step_description": "Talk to the user to gather information.",
+            "step_instructions": "Tell the user the deployment has failed with an image pull error and ask them if they want you to fix the issue. If they say yes, continue from the step build_image. Otherwise say ok and return to the root agent.",
+            "step_tools": []
+        },
+        {
+            "step_name": "build_image",
+            "step_description": "Build the docker image.",
+            "step_instructions": "Build the docker image.",
+            "step_tools": ["build_docker_image"]
+        },
+        {
+            "step_name": "push_image_to_local_registry",
+            "step_description": "Push the image to the local registry.",
+            "step_instructions": "Push the image to the local registry.",
+            "step_tools": ["push_docker_image"]
+        },
+        {
+            "step_name": "invoke_deployment_agent",
+            "step_description": "Invoke the deployment agent to deploy the image to the local cluster.",
+            "step_instructions": "Invoke the deployment agent to deploy the image to the local cluster.",
+            "step_tools": []
+        }
+    ]
+}
